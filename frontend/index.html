@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>内容规划工作台 · Content planning agent</title>
+<link rel="icon" href="/favicon.svg" type="image/svg+xml"><link rel="stylesheet" href="/styles.css">
+<script src="/app.js" defer></script>
+</head>
+<body>
+<header class="topbar"><div class="brand"><img src="/favicon.svg" width="36" height="36" alt=""><div>内容规划工作台<span>Content planning agent</span></div></div>
+<nav aria-label="主导航"><button class="nav-button selected" id="workspace-nav">工作台</button><button class="nav-button" id="history-nav">运行记录 <span id="history-count">0</span></button></nav>
+<a class="repo-link" href="https://github.com/m28851119-cmd/content-planning-agent" target="_blank" rel="noreferrer">项目源码 <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 4h6v6M20 4l-9 9M10 4H4v16h16v-6"/></svg></a></header>
+<main>
+<section class="intro"><div><h1>把内容想法，变成可执行的计划。</h1><p>给定预算与时限，观察 Agent 如何检索、规划与调整。</p></div><button id="examples-open" class="secondary"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 4h14v16H5zM9 8h6M9 12h6M9 16h3"/></svg>查看真实运行样例</button></section>
+<div id="notice" class="notice" role="status" hidden></div>
+<div class="workspace">
+<aside class="setup">
+<div class="section-heading"><h2>新建任务</h2><span class="quiet">输入你的活动目标</span></div>
+<form id="run-form">
+<label for="topic">活动主题</label><textarea id="topic" name="topic" rows="3" maxlength="500" placeholder="例如：秋季新品推广" required>秋季新品推广</textarea>
+<div class="form-row"><div><label for="budget">预算 <span>模拟单位</span></label><input id="budget" name="budget" type="number" min="0" step="any" value="10" placeholder="必填"></div><div><label for="deadline">截止时限 <span>分钟</span></label><input id="deadline" name="deadline" type="number" min="0" step="any" value="120" placeholder="必填"></div></div>
+<label for="backend">运行模式</label><select id="backend"><option value="mock">离线 Mock</option><option value="real" disabled>DeepSeek Pro</option></select>
+<p id="mode-help" class="field-help">脚本化策略验证流程，不代表真实模型决策能力。</p>
+<details class="advanced"><summary>运行设置与故障注入</summary><div class="form-row"><div><label for="max-steps">决策步数上限</label><input id="max-steps" type="number" min="1" max="100" value="12" required></div><div><label for="max-calls">工具调用上限</label><input id="max-calls" type="number" min="1" max="100" value="12" required></div></div>
+<label for="failure">让工具首次调用失败</label><select id="failure"><option value="">不注入故障</option><option value="generate_script">脚本生成</option><option value="search_materials">素材检索</option><option value="estimate_cost">费用估算</option><option value="save_plan">方案保存</option></select></details>
+<button class="primary launch" id="run-button" type="submit"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m8 5 11 7-11 7z"/></svg><span>开始规划</span></button>
+</form>
+<div class="presets"><h3>快速体验</h3><button data-preset="budget"><span>预算内重规划</span><small>12 超限，调整为 8</small><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9 5 7 7-7 7"/></svg></button><button data-preset="failure"><span>失败后继续</span><small>注入一次生成失败</small><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9 5 7 7-7 7"/></svg></button><button data-preset="resume"><span>中断与续跑</span><small>保留已完成的检索</small><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9 5 7 7-7 7"/></svg></button></div>
+<p class="accounting-note">预览与重规划不扣模拟费用，保存时提交方案总额。费用由 Python 台账计算。</p>
+</aside>
+<section class="monitor" aria-label="任务执行">
+<div class="monitor-header"><div><span id="run-label" class="quiet">准备就绪</span><h2 id="run-title">你的下一份内容计划</h2></div><span id="status" class="badge neutral">等待开始</span></div>
+<div class="metrics"><div><span>方案报价 / 预算</span><p><strong id="cost">—</strong><span id="budget-limit"> / 10</span></p><progress id="cost-meter" max="10" value="0" aria-label="预算使用"></progress></div><div><span>模拟耗时 / 时限</span><p><strong id="minutes">—</strong><span id="deadline-limit"> / 120 分钟</span></p><progress id="time-meter" max="120" value="0" aria-label="时间使用"></progress></div><div><span>本次实际扣费</span><p><strong id="charged">—</strong><span> 单位</span></p><small id="charge-note">保存成功后计入台账</small></div></div>
+<div class="tabs" role="tablist" aria-label="运行视图"><button id="tab-flow" role="tab" aria-selected="true" aria-controls="view-flow" data-tab="flow">执行过程 <span id="step-count">0</span></button><button id="tab-plan" role="tab" aria-selected="false" aria-controls="view-plan" tabindex="-1" data-tab="plan">内容方案</button><button id="tab-trace" role="tab" aria-selected="false" aria-controls="view-trace" tabindex="-1" data-tab="trace">Trace 明细</button></div>
+<div id="result-banner" class="result-banner" hidden></div>
+<div id="view-flow" class="view" role="tabpanel" aria-labelledby="tab-flow"><div id="flow-content"></div></div>
+<div id="view-plan" class="view" role="tabpanel" aria-labelledby="tab-plan" hidden><div id="plan-content"></div></div>
+<div id="view-trace" class="view" role="tabpanel" aria-labelledby="tab-trace" hidden><div class="trace-toolbar"><span>原始动作与工具观察结果</span><button id="download-trace" class="text-button" disabled>下载 JSONL</button></div><div id="trace-content"></div></div>
+<div class="monitor-footer"><span id="run-meta">每一步都有记录，每次调整都有依据。</span><div><button id="resume-button" class="secondary compact" hidden>继续执行</button><button id="download-button" class="secondary compact" disabled>导出结果</button></div></div>
+</section>
+<aside class="insights">
+<section><div class="section-heading"><h2>规划路径</h2><span class="quiet">按实际结果更新</span></div><ol id="route"><li data-tool="search_materials"><span class="route-icon">1</span><div>检索素材<small>寻找主题相关内容</small></div><span class="route-status">待执行</span></li><li data-tool="generate_script"><span class="route-icon">2</span><div>生成脚本<small>选择 full 或 lite 版本</small></div><span class="route-status">待执行</span></li><li data-tool="estimate_cost"><span class="route-icon">3</span><div>核算方案<small>检查预算与时限</small></div><span class="route-status">待执行</span></li><li data-tool="save_plan"><span class="route-icon">4</span><div>保存方案<small>通过护栏才可保存</small></div><span class="route-status">待执行</span></li></ol></section>
+<section class="quote-section"><h2>报价变化</h2><div id="quote-chart" class="quote-chart"><p class="quiet">完成首次估算后显示</p></div></section>
+<section class="decision-section"><h2>最近的决策</h2><p id="latest-decision">启动任务后，这里会显示模型返回的简要决策依据。</p><span id="decision-source" class="quiet">不展示模型内部思维过程</span></section>
+</aside>
+</div>
+<footer class="page-footer"><span>素材与费用均为本地模拟数据</span><span>状态持久化 / 依赖校验 / 幂等保存</span></footer>
+</main>
+<dialog id="library"><div class="dialog-heading"><div><h2 id="library-title">运行记录</h2><p id="library-description">查看并继续你的本地任务。</p></div><button id="library-close" class="icon-button" aria-label="关闭">×</button></div><div id="library-content"></div></dialog>
+<noscript><p>此工作台需要启用 JavaScript。也可以使用 python -m src.cli 从命令行运行。</p></noscript>
+</body></html>

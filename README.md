@@ -4,6 +4,16 @@ Python 3.10+ 的原生 ReAct 作业项目。运营人员输入主题、模拟预
 
 **Mock 只验证流程，不证明真实模型决策效果。** 本仓库另外保留实际调用 DeepSeek `deepseek-v4-pro` 的记录；真实运行与 Mock 分目录、分 backend 标记。没有把脚本策略冒充真实模型。
 
+## 可视化工作台
+
+运行 `python -m src.web`，打开 [http://127.0.0.1:8765](http://127.0.0.1:8765)。
+
+页面支持任务配置、Mock/真实模型模式、执行步骤、报价变化、方案查看、Trace 下载、故障注入、历史记录与断点续跑。直接调用原有 Python Agent，不需要 npm；真实模式沿用下方环境变量配置，密钥不进入浏览器。
+
+[前端使用与接口说明](docs/06-web-workbench.md) · [浏览器实际验收](examples/web-ui-results.json)
+
+![内容规划工作台](docs/images/workbench-desktop.png)
+
 ## 快速运行
 
 安装 Python 3.10+，在项目根目录执行：
@@ -97,12 +107,14 @@ python -m src.cli --resume <上条输出的run_id> --max-steps 12
 
 `src/`：agent 执行骨架、llm 两种后端、tools 本地工具、state 持久化、guardrails 代码护栏、trace 导出及 cli。
 `tests/`：工具、状态、CLI、异常动作、幂等与中断恢复测试。
+`frontend/`：原生交互页面，由 `src/web.py` 提供同源 API。
+
 `data/`：合成素材与报价表。
 `scripts/`：实际示例生成及证据审计。
 `docs/`：需求、方案、验收、AI 使用和复盘。
 `examples/`：可提交的实际运行记录和保存文件副本。
 
-运行时仅使用 Python 标准库（urllib、json、dataclasses、pathlib 等），没有大型 Agent 框架。唯一直接测试依赖为 **pytest 8.3.5**。GitHub Actions 配置了 Ubuntu/Windows 与 Python 3.10/3.12 测试矩阵；本地实际测试环境是 Windows/Python 3.12，远端 CI 尚未执行。
+运行时仅使用 Python 标准库（urllib、json、dataclasses、pathlib 等），没有大型 Agent 框架。唯一直接测试依赖为 **pytest 8.3.5**。GitHub Actions 配置了 Ubuntu/Windows 与 Python 3.10/3.12 测试矩阵；本地实际测试环境是 Windows/Python 3.12，首次发布的远端 CI 已在这四种环境全部通过，后续提交状态以 GitHub Actions 为准。
 
 ## 限制与提交
 

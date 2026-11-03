@@ -1,0 +1,22 @@
+{
+  "browser": "Microsoft Edge / Playwright",
+  "checks": [
+    "Mock actual run: 12 -> 8; six tool steps and completed save",
+    "Plan tab renders actual generated script",
+    "Trace tab and actual JSONL download",
+    "Duplicate request returns existing saved plan, zero charge",
+    "Failure remains failed after resume; successful search reused",
+    "Missing input shown without any tool steps",
+    "No feasible plan displays computed gap",
+    "Archived real-model evidence is labelled and read-only",
+    "Persisted history can be opened",
+    "390px mobile layout has no horizontal overflow",
+    "User topic is rendered as text, never executable HTML"
+  ],
+  "page_errors": [],
+  "passed": 11,
+  "screenshots": [
+    "docs/images/workbench-desktop.png",
+    "docs/images/workbench-mobile.png"
+  ]
+}
