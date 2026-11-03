@@ -1,0 +1,11 @@
+{
+  "request": {
+    "topic": "秋季新品推广",
+    "budget": 10.0,
+    "deadline": 120.0
+  },
+  "backend": "real",
+  "run_id": "17987d23bf9d46e7ab940febef5720c9",
+  "max_steps": 12,
+  "max_tool_calls": 12
+}

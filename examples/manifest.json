@@ -1,0 +1,128 @@
+{
+  "generated_at_utc": "2026-11-03T08:47:46.362337+00:00",
+  "python": "3.12.15 (main, Oct 21 2026, 17:48:33) [MSC v.1944 64 bit (AMD64)]",
+  "backend": "mock (scripted policies only)",
+  "results": [
+    {
+      "scenario": "01-normal",
+      "status": "completed",
+      "reason": null,
+      "total_cost": 12,
+      "charged_cost": 12,
+      "run_id": "1efaa7b36e5841b5ae75055f9ac4ffe0"
+    },
+    {
+      "scenario": "02-missing-budget",
+      "status": "needs_input",
+      "reason": "missing_fields",
+      "total_cost": 0,
+      "charged_cost": 0,
+      "run_id": "5b60c8da0abb4dc2b9ab4ea752fa5955"
+    },
+    {
+      "scenario": "03-missing-deadline",
+      "status": "needs_input",
+      "reason": "missing_fields",
+      "total_cost": 0,
+      "charged_cost": 0,
+      "run_id": "f85b438497ea412c86ca94e655ade12c"
+    },
+    {
+      "scenario": "04-tool-failure",
+      "status": "completed",
+      "reason": null,
+      "total_cost": 8,
+      "charged_cost": 8,
+      "run_id": "55cc6dfcde634cbeae4d2a735261655f"
+    },
+    {
+      "scenario": "05-resume-before",
+      "status": "incomplete",
+      "reason": "max_steps_reached",
+      "total_cost": 0,
+      "charged_cost": 0,
+      "run_id": "5c40c6b651eb47e7bd4a6e9ff5c2bf24"
+    },
+    {
+      "scenario": "06-resume-after",
+      "status": "completed",
+      "reason": null,
+      "total_cost": 8,
+      "charged_cost": 8,
+      "run_id": "5c40c6b651eb47e7bd4a6e9ff5c2bf24"
+    },
+    {
+      "scenario": "07-budget-replan",
+      "status": "completed",
+      "reason": null,
+      "total_cost": 8,
+      "charged_cost": 8,
+      "run_id": "a7a228f1e402484cbc676905aac5d4bd"
+    },
+    {
+      "scenario": "08-no-feasible",
+      "status": "incomplete",
+      "reason": "no_feasible_plan",
+      "total_cost": 0,
+      "charged_cost": 0,
+      "run_id": "54a42fa12f9447e8b56f1cea4963e95e"
+    },
+    {
+      "scenario": "09-duplicate-first",
+      "status": "completed",
+      "reason": null,
+      "total_cost": 8,
+      "charged_cost": 8,
+      "run_id": "c47e0857d682456bae41962ba7b5f5b6"
+    },
+    {
+      "scenario": "10-duplicate-second",
+      "status": "completed",
+      "reason": null,
+      "total_cost": 8,
+      "charged_cost": 0,
+      "run_id": "19a030280b68476cb122b0cff84bb379"
+    },
+    {
+      "scenario": "11-max-steps",
+      "status": "incomplete",
+      "reason": "max_steps_reached",
+      "total_cost": 0,
+      "charged_cost": 0,
+      "run_id": "8a2afef3a411474189dea7b34ad42262"
+    },
+    {
+      "scenario": "12-save-guardrail",
+      "status": "completed",
+      "reason": null,
+      "total_cost": 8,
+      "charged_cost": 8,
+      "run_id": "5a961fd81637470dbc64bda6e914389e"
+    },
+    {
+      "scenario": "13-max-tool-calls",
+      "status": "incomplete",
+      "reason": "max_steps_reached",
+      "total_cost": 0,
+      "charged_cost": 0,
+      "run_id": "5a03afc8d81847b7987a62f81310af62"
+    },
+    {
+      "scenario": "14-deadline-replan",
+      "status": "completed",
+      "reason": null,
+      "total_cost": 6,
+      "charged_cost": 6,
+      "run_id": "9e6230c648e848e18b4dc8f4370c76cb"
+    },
+    {
+      "scenario": "15-invalid-action",
+      "status": "completed",
+      "reason": null,
+      "total_cost": 12,
+      "charged_cost": 12,
+      "run_id": "2579338ac2304727bb79b4fca59c3b0d"
+    }
+  ],
+  "duplicate_saved_file_count": 1
+}

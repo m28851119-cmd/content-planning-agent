@@ -1,0 +1,250 @@
+[
+  {
+    "scenario": "16-real-budget-replan",
+    "run_id": "17987d23bf9d46e7ab940febef5720c9",
+    "status": "completed",
+    "estimates": [
+      8
+    ],
+    "failed_steps": [],
+    "backend_config": {},
+    "actions": [
+      {
+        "action": "search_materials",
+        "args": {
+          "topic": "秋季新品推广",
+          "variant": "full"
+        },
+        "rationale": "Start with full search to gather material; total cost with lite script and full save fits budget."
+      },
+      {
+        "action": "generate_script",
+        "args": {
+          "search_step": "s1",
+          "variant": "lite"
+        },
+        "rationale": "Full search already succeeded; full generate + save would exceed budget, so use lite generate to stay within 10 cost."
+      },
+      {
+        "action": "estimate_cost",
+        "args": {
+          "script_step": "s2",
+          "save_variant": "full"
+        },
+        "rationale": "Estimate cost for the selected full save variant; the feasible plan fits budget 10 and deadline 120."
+      },
+      {
+        "action": "save_plan",
+        "args": {
+          "estimate_step": "s3"
+        },
+        "rationale": "The estimated plan costs 8 and takes 35 minutes, within budget and deadline, so save it."
+      },
+      {
+        "action": "finish",
+        "args": {
+          "reason": "completed"
+        },
+        "rationale": "A feasible plan has been estimated and saved successfully within budget and deadline."
+      }
+    ]
+  },
+  {
+    "scenario": "17-real-tool-failure",
+    "run_id": "34c034ebcc2a435c8d310f9ce0c70f8f",
+    "status": "completed",
+    "estimates": [
+      8
+    ],
+    "failed_steps": [
+      "s2"
+    ],
+    "backend_config": {},
+    "actions": [
+      {
+        "action": "search_materials",
+        "args": {
+          "topic": "秋季新品推广",
+          "variant": "full"
+        },
+        "rationale": "Start with full quality search as it fits budget and deadline."
+      },
+      {
+        "action": "generate_script",
+        "args": {
+          "search_step": "s1",
+          "variant": "full"
+        },
+        "rationale": "Use full script generation with successful search results; fits 20 budget and 120 deadline."
+      },
+      {
+        "action": "generate_script",
+        "args": {
+          "search_step": "s1",
+          "variant": "lite"
+        },
+        "rationale": "Full script generation failed; downgrade to lite using the successful full search to stay within budget and deadline."
+      },
+      {
+        "action": "estimate_cost",
+        "args": {
+          "script_step": "s3",
+          "save_variant": "full"
+        },
+        "rationale": "Script lite succeeded; estimate with full save as budget and deadline still allow full quality."
+      },
+      {
+        "action": "save_plan",
+        "args": {
+          "estimate_step": "s4"
+        },
+        "rationale": "Estimate is within budget and deadline, so save the plan to finish."
+      },
+      {
+        "action": "invalid_action",
+        "args": {},
+        "rationale": "动作校验失败，返回模型修正。"
+      },
+      {
+        "action": "finish",
+        "args": {
+          "reason": "completed"
+        },
+        "rationale": "Plan saved successfully."
+      }
+    ]
+  },
+  {
+    "scenario": "18-real-observed-replan",
+    "run_id": "f0cb2eeca594480c9de08e5d8dbc6ac7",
+    "status": "completed",
+    "estimates": [
+      12,
+      8
+    ],
+    "failed_steps": [],
+    "backend_config": {
+      "model": "deepseek-v4-pro",
+      "base_url": "https://api.deepseek.com"
+    },
+    "actions": [
+      {
+        "action": "search_materials",
+        "args": {
+          "topic": "秋季新品推广",
+          "variant": "full"
+        },
+        "rationale": "先探索全质量候选作为质量基线，按规划偏好即使可能超预算也先获取报价。"
+      },
+      {
+        "action": "generate_script",
+        "args": {
+          "search_step": "s1",
+          "variant": "full"
+        },
+        "rationale": "使用全质量候选生成脚本以获取基线报价，观察是否超出预算。"
+      },
+      {
+        "action": "estimate_cost",
+        "args": {
+          "script_step": "s2",
+          "save_variant": "full"
+        },
+        "rationale": "获取全质量方案的总报价作为基线，确认是否超出预算。"
+      },
+      {
+        "action": "generate_script",
+        "args": {
+          "search_step": "s1",
+          "variant": "lite"
+        },
+        "rationale": "全质量方案总成本12超出预算2，改用lite生成脚本以将成本降至8并满足预算。"
+      },
+      {
+        "action": "estimate_cost",
+        "args": {
+          "script_step": "s4",
+          "save_variant": "full"
+        },
+        "rationale": "全质量方案超预算，改用lite脚本后需要估算该方案，确认成本符合10预算。"
+      },
+      {
+        "action": "save_plan",
+        "args": {
+          "estimate_step": "s5"
+        },
+        "rationale": "使用预算内且满足时限的lite脚本方案保存计划，成本8、耗时35。"
+      },
+      {
+        "action": "finish",
+        "args": {
+          "reason": "completed"
+        },
+        "rationale": "计划已保存，成本8、耗时35均在预算和时限内。"
+      }
+    ]
+  },
+  {
+    "scenario": "19-real-failure-final",
+    "run_id": "9f215f21d7be45f39ed3fe6db19fa274",
+    "status": "completed",
+    "estimates": [
+      12
+    ],
+    "failed_steps": [
+      "s2"
+    ],
+    "backend_config": {
+      "model": "deepseek-v4-pro",
+      "base_url": "https://api.deepseek.com"
+    },
+    "actions": [
+      {
+        "action": "search_materials",
+        "args": {
+          "topic": "秋季新品推广",
+          "variant": "full"
+        },
+        "rationale": "先获取高质量素材，作为完整方案的基线，后续再根据估算结果调整。"
+      },
+      {
+        "action": "generate_script",
+        "args": {
+          "search_step": "s1",
+          "variant": "full"
+        },
+        "rationale": "先生成高质量脚本作为基线，随后请求估算以评估成本与时间是否满足预算和截止时间。"
+      },
+      {
+        "action": "generate_script",
+        "args": {
+          "search_step": "s1",
+          "variant": "full"
+        },
+        "rationale": "Retry the full-quality script generation after the injected failure to establish the quality baseline cost."
+      },
+      {
+        "action": "estimate_cost",
+        "args": {
+          "script_step": "s3",
+          "save_variant": "full"
+        },
+        "rationale": "Request full-quality baseline estimate from the succeeded full script before deciding whether to adjust variants."
+      },
+      {
+        "action": "save_plan",
+        "args": {
+          "estimate_step": "s4"
+        },
+        "rationale": "Full-quality estimate (12 cost, 55 minutes) fits budget 20 and deadline 120, so save this feasible plan."
+      },
+      {
+        "action": "finish",
+        "args": {
+          "reason": "completed"
+        },
+        "rationale": "A feasible full-quality plan was saved successfully within budget and deadline."
+      }
+    ]
+  }
+]

@@ -1,0 +1,52 @@
+{
+  "request": {
+    "topic": "秋季新品推广",
+    "budget": null,
+    "deadline": 120
+  },
+  "run_id": "5b60c8da0abb4dc2b9ab4ea752fa5955",
+  "plan": [],
+  "ledger": [],
+  "events": [
+    {
+      "step": 0,
+      "action": "input_validation",
+      "args": {},
+      "observation": {
+        "missing_fields": [
+          "budget"
+        ]
+      },
+      "rationale": "",
+      "state": {
+        "status": "needs_input",
+        "total_cost": 0,
+        "total_minutes": 0,
+        "charged_cost": 0,
+        "tool_calls": 0,
+        "steps": {}
+      },
+      "next_action": null
+    }
+  ],
+  "observations": [],
+  "used_steps": 0,
+  "tool_calls": 0,
+  "status": "needs_input",
+  "reason": "missing_fields",
+  "selected_plan": null,
+  "total_cost": 0,
+  "total_minutes": 0,
+  "saved": null,
+  "gap": {},
+  "missing_fields": [
+    "budget"
+  ],
+  "failures_remaining": {},
+  "backend": "mock",
+  "backend_config": {},
+  "injection_config": {},
+  "max_steps": 12,
+  "max_tool_calls": 12,
+  "charged_cost": 0
+}

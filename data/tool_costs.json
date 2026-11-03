@@ -1,0 +1,6 @@
+{
+  "search_materials": {"full":{"cost":2,"minutes":10},"lite":{"cost":1,"minutes":5}},
+  "generate_script": {"full":{"cost":8,"minutes":40},"lite":{"cost":4,"minutes":20}},
+  "estimate_cost": {"full":{"cost":0,"minutes":0},"lite":{"cost":0,"minutes":0}},
+  "save_plan": {"full":{"cost":2,"minutes":5},"lite":{"cost":1,"minutes":3}}
+}

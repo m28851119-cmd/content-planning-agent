@@ -1,0 +1,176 @@
+{
+  "count": 19,
+  "artifacts": [
+    {
+      "scenario": "01-normal",
+      "status": "completed",
+      "backend": "mock",
+      "total_cost": 12,
+      "output_sha256": "6359cc614e30d50a7bff88d49317715c621c7b92f0f39200733adf1774eebd97",
+      "trace_sha256": "c4d840dd1e6fb2c05f25622069e87bf093759c94edba09240fe61c0e44c81d6b",
+      "verified": true
+    },
+    {
+      "scenario": "02-missing-budget",
+      "status": "needs_input",
+      "backend": "mock",
+      "total_cost": 0,
+      "output_sha256": "b817114b169333a17f8f00ecbfd6424cb565ea514b651989080bfa78e855a555",
+      "trace_sha256": "5f0e25bc3cc94b0b10b22cf51f5766899c60808cc59a28f29045d7d0eb7e9f3f",
+      "verified": true
+    },
+    {
+      "scenario": "03-missing-deadline",
+      "status": "needs_input",
+      "backend": "mock",
+      "total_cost": 0,
+      "output_sha256": "c87e0c38cade3b1148734f36086d85edc8824a022ebd2794e4e5a9bdd83848f6",
+      "trace_sha256": "b4346ff5c453e9ebb80831cae1e68f49d4c1c062973bf9a8a1625880670e91ee",
+      "verified": true
+    },
+    {
+      "scenario": "04-tool-failure",
+      "status": "completed",
+      "backend": "mock",
+      "total_cost": 8,
+      "output_sha256": "5fff07d1a68cd99e7784ca7103ae3bfe0e446268ac9c09c21662ab3dad422ca0",
+      "trace_sha256": "203b32cb91fc9ceb7555142280d794dfa5f3f1f5f022b211e9c59afa2193b329",
+      "verified": true
+    },
+    {
+      "scenario": "05-resume-before",
+      "status": "incomplete",
+      "backend": "mock",
+      "total_cost": 0,
+      "output_sha256": "c0cc7df3f15290a8468f992e989d7ea726d7e54aae81d1f662481f493772f91e",
+      "trace_sha256": "a7cc1aeb6beb84f0159c374b5746891da3b3b941294ad601a3ce4b84914c807b",
+      "verified": true
+    },
+    {
+      "scenario": "06-resume-after",
+      "status": "completed",
+      "backend": "mock",
+      "total_cost": 8,
+      "output_sha256": "9e855d8f1a51247b4818cb1c5ed36e8c06b2a4b42cc0b76bdc07dc6aa228ed5a",
+      "trace_sha256": "2b0a85e035702410224d04e40916197dd64b9bde5862be12701850baad216210",
+      "verified": true
+    },
+    {
+      "scenario": "07-budget-replan",
+      "status": "completed",
+      "backend": "mock",
+      "total_cost": 8,
+      "output_sha256": "0ee243b81c07f130c4649eceffcf998bc76477f098ae9c3008c69bad07672024",
+      "trace_sha256": "25bc9a44fcb714210abcf3866efcccceb0c0235cc7c3ecac0043c762012f2c31",
+      "verified": true
+    },
+    {
+      "scenario": "08-no-feasible",
+      "status": "incomplete",
+      "backend": "mock",
+      "total_cost": 0,
+      "output_sha256": "c0828a1114f1d1ba6164ebb4a02d0c5a4a2cf8ed15ac663639173a0bca120fdd",
+      "trace_sha256": "35c1131e6ca9f2b980151333767946885f4241be15f2e3c7dcb078f5d4e19cc3",
+      "verified": true
+    },
+    {
+      "scenario": "09-duplicate-first",
+      "status": "completed",
+      "backend": "mock",
+      "total_cost": 8,
+      "output_sha256": "e524c40691c91757991285bb19cc8c297ffc2195efccfcb4ef169db28ac47bcc",
+      "trace_sha256": "3d5ca61f28f4db70ee5b96c517b36af8a8541fbaff3ed138723686d070e57b47",
+      "verified": true
+    },
+    {
+      "scenario": "10-duplicate-second",
+      "status": "completed",
+      "backend": "mock",
+      "total_cost": 8,
+      "output_sha256": "202ebb20a0f1524fe9447113ec6757eb06cc87a6824cf873448c4bf750256f35",
+      "trace_sha256": "4f3b544516ddc223204e602e8a6358cd1125c2150162252a5896abbcc1fe59fc",
+      "verified": true
+    },
+    {
+      "scenario": "11-max-steps",
+      "status": "incomplete",
+      "backend": "mock",
+      "total_cost": 0,
+      "output_sha256": "30b22b6407de17bf9f11251e9591cd915ef0d5f8b7a78bbe89e5f41f708cb311",
+      "trace_sha256": "b7c67cb02fb83a49746406040201c23e7f439722da3893d58ba3c13e6391a30e",
+      "verified": true
+    },
+    {
+      "scenario": "12-save-guardrail",
+      "status": "completed",
+      "backend": "mock-adversarial",
+      "total_cost": 8,
+      "output_sha256": "b266eca0ac731d0454a255166d6367caa6f5f3feabd8d9a59f3bbf89f7b07d10",
+      "trace_sha256": "ae3b889ec80dc0d0d63e10c751016bb89a845227df31404caaa5b20dc212916d",
+      "verified": true
+    },
+    {
+      "scenario": "13-max-tool-calls",
+      "status": "incomplete",
+      "backend": "mock",
+      "total_cost": 0,
+      "output_sha256": "d1a28eb95b522bab7065cf8d06bdf9113b1e2b4e434393865263c4763986f7a4",
+      "trace_sha256": "91feeb8866427641ede0e2e4908f7169b8b641cf601d1a0236275e70ce838352",
+      "verified": true
+    },
+    {
+      "scenario": "14-deadline-replan",
+      "status": "completed",
+      "backend": "mock",
+      "total_cost": 6,
+      "output_sha256": "d7a200d0b9b6b0cc8a47f449e132cb18f4bd5a6c9efa76d33185bb358a533a66",
+      "trace_sha256": "f35eae45875fd98a492dee5d821b609b5c63c7c519dba7224744cbbec66c3edc",
+      "verified": true
+    },
+    {
+      "scenario": "15-invalid-action",
+      "status": "completed",
+      "backend": "mock-adversarial",
+      "total_cost": 12,
+      "output_sha256": "8e9665beee8e651fbc7d7b865c8b54d59be8bb4531738c6f02383344e839998f",
+      "trace_sha256": "7ab55186b35f665b3ca66d496c4deb88baf221296031a0690f4219bff1743b2b",
+      "verified": true
+    },
+    {
+      "scenario": "16-real-budget-replan",
+      "status": "completed",
+      "backend": "real",
+      "total_cost": 8,
+      "output_sha256": "1865cae587bb67b0da845c900820367cb5d23296ccb6517b8eca4e742c81f181",
+      "trace_sha256": "cd5a3d1a35914f3f70feb663ed1c86614b087d5ebe6f3a44819b26417692a8a1",
+      "verified": true
+    },
+    {
+      "scenario": "17-real-tool-failure",
+      "status": "completed",
+      "backend": "real",
+      "total_cost": 8,
+      "output_sha256": "13f3c044f5ce468ffa5a6109879b77f79298ad5f54c3fc72893c853bb0a8d051",
+      "trace_sha256": "cf74e638d07439ac4e63c0b312e651109d7f5b2616c43a125903567caecf21c1",
+      "verified": true
+    },
+    {
+      "scenario": "18-real-observed-replan",
+      "status": "completed",
+      "backend": "real",
+      "total_cost": 8,
+      "output_sha256": "9ecc82f0b8a714e78ebbfd7322ff7ea60395d4bb31473a3a7fda03fcc12ee36c",
+      "trace_sha256": "03b3f4bf8698020250bbfb2d2c36b20e45d729ea0ac780a06c6995c4eb84d0cd",
+      "verified": true
+    },
+    {
+      "scenario": "19-real-failure-final",
+      "status": "completed",
+      "backend": "real",
+      "total_cost": 12,
+      "output_sha256": "02a2c4dc00523476c3e685844ba47f97089b6e08dfb45c0512e4d814d17d93fa",
+      "trace_sha256": "d4e1d3ec9223b2be37854ffa8792de1c3c128379c597788b5bb78c5724385d35",
+      "verified": true
+    }
+  ]
+}

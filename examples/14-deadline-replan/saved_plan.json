@@ -1,0 +1,1 @@
+{"committed_by":"9e6230c648e848e18b4dc8f4370c76cb","idempotency_key":"3cc5369540788b13a3b68a3fb84730550f790d9c039aa15bbc82dba070aecd1e","plan":{"material_ids":["m1"],"script":"[lite] 开场：提出场景问题。\n合成素材：秋季新品面向通勤人群，强调轻便体验。\n行动：邀请参与活动。","topic":"秋季新品推广","variants":{"generate_script":"lite","save_plan":"lite","search_materials":"lite"}}}

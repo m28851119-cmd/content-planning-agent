@@ -1,0 +1,14 @@
+{
+  "request": {
+    "topic": "秋季新品推广",
+    "budget": 20,
+    "deadline": 120
+  },
+  "backend": "mock",
+  "run_id": "5a03afc8d81847b7987a62f81310af62",
+  "backend_config": {},
+  "inject_failure": {},
+  "max_steps": 12,
+  "max_tool_calls": 1,
+  "execution": "mock 运行；只验证流程，不证明真实模型决策效果"
+}

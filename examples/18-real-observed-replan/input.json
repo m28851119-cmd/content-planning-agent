@@ -1,0 +1,16 @@
+{
+  "request": {
+    "topic": "秋季新品推广",
+    "budget": 10.0,
+    "deadline": 120.0
+  },
+  "backend": "real",
+  "run_id": "f0cb2eeca594480c9de08e5d8dbc6ac7",
+  "backend_config": {
+    "model": "deepseek-v4-pro",
+    "base_url": "https://api.deepseek.com"
+  },
+  "inject_failure": {},
+  "max_steps": 12,
+  "max_tool_calls": 12
+}

@@ -1,0 +1,189 @@
+{
+  "request": {
+    "topic": "秋季新品推广",
+    "budget": 20,
+    "deadline": 120
+  },
+  "run_id": "5a03afc8d81847b7987a62f81310af62",
+  "plan": [
+    {
+      "id": "s1",
+      "tool": "search_materials",
+      "args": {
+        "topic": "秋季新品推广",
+        "variant": "full"
+      },
+      "dependencies": [],
+      "status": "succeeded",
+      "result": {
+        "material_ids": [
+          "m1",
+          "m2"
+        ],
+        "materials": [
+          {
+            "id": "m1",
+            "tags": [
+              "秋季",
+              "新品",
+              "推广"
+            ],
+            "text": "合成素材：秋季新品面向通勤人群，强调轻便体验。"
+          },
+          {
+            "id": "m2",
+            "tags": [
+              "活动",
+              "内容"
+            ],
+            "text": "合成素材：用场景故事介绍产品，再邀请用户参与互动。"
+          }
+        ],
+        "variant": "full",
+        "quote": {
+          "cost": 2,
+          "minutes": 10
+        }
+      },
+      "tool_args": {
+        "topic": "秋季新品推广",
+        "variant": "full"
+      }
+    }
+  ],
+  "ledger": [],
+  "events": [
+    {
+      "step": 1,
+      "action": "search_materials",
+      "args": {
+        "topic": "秋季新品推广",
+        "variant": "full"
+      },
+      "observation": {
+        "step_id": "s1",
+        "tool": "search_materials",
+        "result": {
+          "material_ids": [
+            "m1",
+            "m2"
+          ],
+          "materials": [
+            {
+              "id": "m1",
+              "tags": [
+                "秋季",
+                "新品",
+                "推广"
+              ],
+              "text": "合成素材：秋季新品面向通勤人群，强调轻便体验。"
+            },
+            {
+              "id": "m2",
+              "tags": [
+                "活动",
+                "内容"
+              ],
+              "text": "合成素材：用场景故事介绍产品，再邀请用户参与互动。"
+            }
+          ],
+          "variant": "full",
+          "quote": {
+            "cost": 2,
+            "minutes": 10
+          }
+        }
+      },
+      "rationale": "先获取主题素材。",
+      "state": {
+        "status": "running",
+        "total_cost": 0,
+        "total_minutes": 0,
+        "charged_cost": 0,
+        "tool_calls": 1,
+        "steps": {
+          "s1": "succeeded"
+        }
+      },
+      "next_action": "limit",
+      "tool_args": {
+        "topic": "秋季新品推广",
+        "variant": "full"
+      }
+    },
+    {
+      "step": 1,
+      "action": "limit",
+      "args": {},
+      "observation": {
+        "reason": "max_steps_reached",
+        "limit": "max_tool_calls"
+      },
+      "rationale": "",
+      "state": {
+        "status": "incomplete",
+        "total_cost": 0,
+        "total_minutes": 0,
+        "charged_cost": 0,
+        "tool_calls": 1,
+        "steps": {
+          "s1": "succeeded"
+        }
+      },
+      "next_action": null
+    }
+  ],
+  "observations": [
+    {
+      "step_id": "s1",
+      "tool": "search_materials",
+      "result": {
+        "material_ids": [
+          "m1",
+          "m2"
+        ],
+        "materials": [
+          {
+            "id": "m1",
+            "tags": [
+              "秋季",
+              "新品",
+              "推广"
+            ],
+            "text": "合成素材：秋季新品面向通勤人群，强调轻便体验。"
+          },
+          {
+            "id": "m2",
+            "tags": [
+              "活动",
+              "内容"
+            ],
+            "text": "合成素材：用场景故事介绍产品，再邀请用户参与互动。"
+          }
+        ],
+        "variant": "full",
+        "quote": {
+          "cost": 2,
+          "minutes": 10
+        }
+      }
+    }
+  ],
+  "used_steps": 1,
+  "tool_calls": 1,
+  "status": "incomplete",
+  "reason": "max_steps_reached",
+  "selected_plan": null,
+  "total_cost": 0,
+  "total_minutes": 0,
+  "saved": null,
+  "gap": {},
+  "missing_fields": [],
+  "failures_remaining": {},
+  "backend": "mock",
+  "backend_config": {},
+  "injection_config": {},
+  "max_steps": 12,
+  "max_tool_calls": 1,
+  "charged_cost": 0
+}

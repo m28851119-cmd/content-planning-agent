@@ -1,0 +1,660 @@
+{
+  "request": {
+    "topic": "秋季新品推广",
+    "budget": 20.0,
+    "deadline": 120.0
+  },
+  "run_id": "9f215f21d7be45f39ed3fe6db19fa274",
+  "plan": [
+    {
+      "id": "s1",
+      "tool": "search_materials",
+      "args": {
+        "topic": "秋季新品推广",
+        "variant": "full"
+      },
+      "dependencies": [],
+      "status": "succeeded",
+      "result": {
+        "material_ids": [
+          "m1",
+          "m2"
+        ],
+        "materials": [
+          {
+            "id": "m1",
+            "tags": [
+              "秋季",
+              "新品",
+              "推广"
+            ],
+            "text": "合成素材：秋季新品面向通勤人群，强调轻便体验。"
+          },
+          {
+            "id": "m2",
+            "tags": [
+              "活动",
+              "内容"
+            ],
+            "text": "合成素材：用场景故事介绍产品，再邀请用户参与互动。"
+          }
+        ],
+        "variant": "full",
+        "quote": {
+          "cost": 2,
+          "minutes": 10
+        }
+      },
+      "tool_args": {
+        "topic": "秋季新品推广",
+        "variant": "full"
+      }
+    },
+    {
+      "id": "s2",
+      "tool": "generate_script",
+      "args": {
+        "search_step": "s1",
+        "variant": "full"
+      },
+      "dependencies": [
+        "s1"
+      ],
+      "status": "failed",
+      "result": null,
+      "tool_args": {
+        "material_ids": [
+          "m1",
+          "m2"
+        ],
+        "variant": "full"
+      },
+      "error": "injected_failure"
+    },
+    {
+      "id": "s3",
+      "tool": "generate_script",
+      "args": {
+        "search_step": "s1",
+        "variant": "full"
+      },
+      "dependencies": [
+        "s1"
+      ],
+      "status": "succeeded",
+      "result": {
+        "script": "[full] 开场：提出场景问题。\n合成素材：秋季新品面向通勤人群，强调轻便体验。\n合成素材：用场景故事介绍产品，再邀请用户参与互动。\n行动：邀请参与活动。",
+        "material_ids": [
+          "m1",
+          "m2"
+        ],
+        "variant": "full",
+        "quote": {
+          "cost": 8,
+          "minutes": 40
+        }
+      },
+      "tool_args": {
+        "material_ids": [
+          "m1",
+          "m2"
+        ],
+        "variant": "full"
+      }
+    },
+    {
+      "id": "s4",
+      "tool": "estimate_cost",
+      "args": {
+        "script_step": "s3",
+        "save_variant": "full"
+      },
+      "dependencies": [
+        "s3"
+      ],
+      "status": "succeeded",
+      "result": {
+        "estimate": {
+          "components": [
+            {
+              "tool": "search_materials",
+              "variant": "full",
+              "cost": 2,
+              "minutes": 10
+            },
+            {
+              "tool": "generate_script",
+              "variant": "full",
+              "cost": 8,
+              "minutes": 40
+            },
+            {
+              "tool": "save_plan",
+              "variant": "full",
+              "cost": 2,
+              "minutes": 5
+            }
+          ],
+          "total_cost": 12,
+          "total_minutes": 55,
+          "plan_hash": "7ec3ba931b550b6fbb0fca29f6f77eb9c6ebe1f83855ae1eeb431877f51b6925"
+        },
+        "gap": {
+          "cost": 0,
+          "minutes": 0
+        }
+      },
+      "tool_args": {
+        "plan": {
+          "topic": "秋季新品推广",
+          "material_ids": [
+            "m1",
+            "m2"
+          ],
+          "script": "[full] 开场：提出场景问题。\n合成素材：秋季新品面向通勤人群，强调轻便体验。\n合成素材：用场景故事介绍产品，再邀请用户参与互动。\n行动：邀请参与活动。",
+          "variants": {
+            "search_materials": "full",
+            "generate_script": "full",
+            "save_plan": "full"
+          }
+        }
+      }
+    },
+    {
+      "id": "s5",
+      "tool": "save_plan",
+      "args": {
+        "estimate_step": "s4"
+      },
+      "dependencies": [
+        "s4"
+      ],
+      "status": "succeeded",
+      "result": {
+        "path": "runs\\real-failure-final\\fa7541dec2a339bbd5889a3e5dc388dc8478b3504cafc8e677e0b38abae8e934.json",
+        "already_exists": false,
+        "committed_by": "9f215f21d7be45f39ed3fe6db19fa274",
+        "charged_cost": 12,
+        "recovered_commit": false
+      },
+      "tool_args": {
+        "plan": {
+          "topic": "秋季新品推广",
+          "material_ids": [
+            "m1",
+            "m2"
+          ],
+          "script": "[full] 开场：提出场景问题。\n合成素材：秋季新品面向通勤人群，强调轻便体验。\n合成素材：用场景故事介绍产品，再邀请用户参与互动。\n行动：邀请参与活动。",
+          "variants": {
+            "search_materials": "full",
+            "generate_script": "full",
+            "save_plan": "full"
+          }
+        },
+        "idempotency_key": "fa7541dec2a339bbd5889a3e5dc388dc8478b3504cafc8e677e0b38abae8e934"
+      }
+    }
+  ],
+  "ledger": [
+    {
+      "step_id": "s5",
+      "idempotency_key": "fa7541dec2a339bbd5889a3e5dc388dc8478b3504cafc8e677e0b38abae8e934",
+      "components": [
+        {
+          "tool": "search_materials",
+          "variant": "full",
+          "cost": 2,
+          "minutes": 10
+        },
+        {
+          "tool": "generate_script",
+          "variant": "full",
+          "cost": 8,
+          "minutes": 40
+        },
+        {
+          "tool": "save_plan",
+          "variant": "full",
+          "cost": 2,
+          "minutes": 5
+        }
+      ],
+      "charged_cost": 12,
+      "already_exists": false
+    }
+  ],
+  "events": [
+    {
+      "step": 1,
+      "action": "search_materials",
+      "args": {
+        "topic": "秋季新品推广",
+        "variant": "full"
+      },
+      "observation": {
+        "step_id": "s1",
+        "tool": "search_materials",
+        "result": {
+          "material_ids": [
+            "m1",
+            "m2"
+          ],
+          "materials": [
+            {
+              "id": "m1",
+              "tags": [
+                "秋季",
+                "新品",
+                "推广"
+              ],
+              "text": "合成素材：秋季新品面向通勤人群，强调轻便体验。"
+            },
+            {
+              "id": "m2",
+              "tags": [
+                "活动",
+                "内容"
+              ],
+              "text": "合成素材：用场景故事介绍产品，再邀请用户参与互动。"
+            }
+          ],
+          "variant": "full",
+          "quote": {
+            "cost": 2,
+            "minutes": 10
+          }
+        }
+      },
+      "rationale": "先获取高质量素材，作为完整方案的基线，后续再根据估算结果调整。",
+      "state": {
+        "status": "running",
+        "total_cost": 0,
+        "total_minutes": 0,
+        "charged_cost": 0,
+        "tool_calls": 1,
+        "steps": {
+          "s1": "succeeded"
+        }
+      },
+      "next_action": "generate_script",
+      "tool_args": {
+        "topic": "秋季新品推广",
+        "variant": "full"
+      }
+    },
+    {
+      "step": 2,
+      "action": "generate_script",
+      "args": {
+        "search_step": "s1",
+        "variant": "full"
+      },
+      "observation": {
+        "step_id": "s2",
+        "tool": "generate_script",
+        "error": "injected_failure"
+      },
+      "rationale": "先生成高质量脚本作为基线，随后请求估算以评估成本与时间是否满足预算和截止时间。",
+      "state": {
+        "status": "running",
+        "total_cost": 0,
+        "total_minutes": 0,
+        "charged_cost": 0,
+        "tool_calls": 2,
+        "steps": {
+          "s1": "succeeded",
+          "s2": "failed"
+        }
+      },
+      "next_action": "generate_script",
+      "tool_args": {
+        "material_ids": [
+          "m1",
+          "m2"
+        ],
+        "variant": "full"
+      }
+    },
+    {
+      "step": 3,
+      "action": "generate_script",
+      "args": {
+        "search_step": "s1",
+        "variant": "full"
+      },
+      "observation": {
+        "step_id": "s3",
+        "tool": "generate_script",
+        "result": {
+          "script": "[full] 开场：提出场景问题。\n合成素材：秋季新品面向通勤人群，强调轻便体验。\n合成素材：用场景故事介绍产品，再邀请用户参与互动。\n行动：邀请参与活动。",
+          "material_ids": [
+            "m1",
+            "m2"
+          ],
+          "variant": "full",
+          "quote": {
+            "cost": 8,
+            "minutes": 40
+          }
+        }
+      },
+      "rationale": "Retry the full-quality script generation after the injected failure to establish the quality baseline cost.",
+      "state": {
+        "status": "running",
+        "total_cost": 0,
+        "total_minutes": 0,
+        "charged_cost": 0,
+        "tool_calls": 3,
+        "steps": {
+          "s1": "succeeded",
+          "s2": "failed",
+          "s3": "succeeded"
+        }
+      },
+      "next_action": "estimate_cost",
+      "tool_args": {
+        "material_ids": [
+          "m1",
+          "m2"
+        ],
+        "variant": "full"
+      }
+    },
+    {
+      "step": 4,
+      "action": "estimate_cost",
+      "args": {
+        "script_step": "s3",
+        "save_variant": "full"
+      },
+      "observation": {
+        "step_id": "s4",
+        "tool": "estimate_cost",
+        "result": {
+          "estimate": {
+            "components": [
+              {
+                "tool": "search_materials",
+                "variant": "full",
+                "cost": 2,
+                "minutes": 10
+              },
+              {
+                "tool": "generate_script",
+                "variant": "full",
+                "cost": 8,
+                "minutes": 40
+              },
+              {
+                "tool": "save_plan",
+                "variant": "full",
+                "cost": 2,
+                "minutes": 5
+              }
+            ],
+            "total_cost": 12,
+            "total_minutes": 55,
+            "plan_hash": "7ec3ba931b550b6fbb0fca29f6f77eb9c6ebe1f83855ae1eeb431877f51b6925"
+          },
+          "gap": {
+            "cost": 0,
+            "minutes": 0
+          }
+        }
+      },
+      "rationale": "Request full-quality baseline estimate from the succeeded full script before deciding whether to adjust variants.",
+      "state": {
+        "status": "running",
+        "total_cost": 12,
+        "total_minutes": 55,
+        "charged_cost": 0,
+        "tool_calls": 4,
+        "steps": {
+          "s1": "succeeded",
+          "s2": "failed",
+          "s3": "succeeded",
+          "s4": "succeeded"
+        }
+      },
+      "next_action": "save_plan",
+      "tool_args": {
+        "plan": {
+          "topic": "秋季新品推广",
+          "material_ids": [
+            "m1",
+            "m2"
+          ],
+          "script": "[full] 开场：提出场景问题。\n合成素材：秋季新品面向通勤人群，强调轻便体验。\n合成素材：用场景故事介绍产品，再邀请用户参与互动。\n行动：邀请参与活动。",
+          "variants": {
+            "search_materials": "full",
+            "generate_script": "full",
+            "save_plan": "full"
+          }
+        }
+      }
+    },
+    {
+      "step": 5,
+      "action": "save_plan",
+      "args": {
+        "estimate_step": "s4"
+      },
+      "observation": {
+        "step_id": "s5",
+        "tool": "save_plan",
+        "result": {
+          "path": "runs\\real-failure-final\\fa7541dec2a339bbd5889a3e5dc388dc8478b3504cafc8e677e0b38abae8e934.json",
+          "already_exists": false,
+          "committed_by": "9f215f21d7be45f39ed3fe6db19fa274",
+          "charged_cost": 12,
+          "recovered_commit": false
+        }
+      },
+      "rationale": "Full-quality estimate (12 cost, 55 minutes) fits budget 20 and deadline 120, so save this feasible plan.",
+      "state": {
+        "status": "running",
+        "total_cost": 12,
+        "total_minutes": 55,
+        "charged_cost": 12,
+        "tool_calls": 5,
+        "steps": {
+          "s1": "succeeded",
+          "s2": "failed",
+          "s3": "succeeded",
+          "s4": "succeeded",
+          "s5": "succeeded"
+        }
+      },
+      "next_action": "finish",
+      "tool_args": {
+        "plan": {
+          "topic": "秋季新品推广",
+          "material_ids": [
+            "m1",
+            "m2"
+          ],
+          "script": "[full] 开场：提出场景问题。\n合成素材：秋季新品面向通勤人群，强调轻便体验。\n合成素材：用场景故事介绍产品，再邀请用户参与互动。\n行动：邀请参与活动。",
+          "variants": {
+            "search_materials": "full",
+            "generate_script": "full",
+            "save_plan": "full"
+          }
+        },
+        "idempotency_key": "fa7541dec2a339bbd5889a3e5dc388dc8478b3504cafc8e677e0b38abae8e934"
+      }
+    },
+    {
+      "step": 6,
+      "action": "finish",
+      "args": {
+        "reason": "completed"
+      },
+      "observation": {
+        "status": "completed",
+        "reason": null,
+        "gap": {}
+      },
+      "rationale": "A feasible full-quality plan was saved successfully within budget and deadline.",
+      "state": {
+        "status": "completed",
+        "total_cost": 12,
+        "total_minutes": 55,
+        "charged_cost": 12,
+        "tool_calls": 5,
+        "steps": {
+          "s1": "succeeded",
+          "s2": "failed",
+          "s3": "succeeded",
+          "s4": "succeeded",
+          "s5": "succeeded"
+        }
+      },
+      "next_action": null
+    }
+  ],
+  "observations": [
+    {
+      "step_id": "s1",
+      "tool": "search_materials",
+      "result": {
+        "material_ids": [
+          "m1",
+          "m2"
+        ],
+        "materials": [
+          {
+            "id": "m1",
+            "tags": [
+              "秋季",
+              "新品",
+              "推广"
+            ],
+            "text": "合成素材：秋季新品面向通勤人群，强调轻便体验。"
+          },
+          {
+            "id": "m2",
+            "tags": [
+              "活动",
+              "内容"
+            ],
+            "text": "合成素材：用场景故事介绍产品，再邀请用户参与互动。"
+          }
+        ],
+        "variant": "full",
+        "quote": {
+          "cost": 2,
+          "minutes": 10
+        }
+      }
+    },
+    {
+      "step_id": "s2",
+      "tool": "generate_script",
+      "error": "injected_failure"
+    },
+    {
+      "step_id": "s3",
+      "tool": "generate_script",
+      "result": {
+        "script": "[full] 开场：提出场景问题。\n合成素材：秋季新品面向通勤人群，强调轻便体验。\n合成素材：用场景故事介绍产品，再邀请用户参与互动。\n行动：邀请参与活动。",
+        "material_ids": [
+          "m1",
+          "m2"
+        ],
+        "variant": "full",
+        "quote": {
+          "cost": 8,
+          "minutes": 40
+        }
+      }
+    },
+    {
+      "step_id": "s4",
+      "tool": "estimate_cost",
+      "result": {
+        "estimate": {
+          "components": [
+            {
+              "tool": "search_materials",
+              "variant": "full",
+              "cost": 2,
+              "minutes": 10
+            },
+            {
+              "tool": "generate_script",
+              "variant": "full",
+              "cost": 8,
+              "minutes": 40
+            },
+            {
+              "tool": "save_plan",
+              "variant": "full",
+              "cost": 2,
+              "minutes": 5
+            }
+          ],
+          "total_cost": 12,
+          "total_minutes": 55,
+          "plan_hash": "7ec3ba931b550b6fbb0fca29f6f77eb9c6ebe1f83855ae1eeb431877f51b6925"
+        },
+        "gap": {
+          "cost": 0,
+          "minutes": 0
+        }
+      }
+    },
+    {
+      "step_id": "s5",
+      "tool": "save_plan",
+      "result": {
+        "path": "runs\\real-failure-final\\fa7541dec2a339bbd5889a3e5dc388dc8478b3504cafc8e677e0b38abae8e934.json",
+        "already_exists": false,
+        "committed_by": "9f215f21d7be45f39ed3fe6db19fa274",
+        "charged_cost": 12,
+        "recovered_commit": false
+      }
+    }
+  ],
+  "used_steps": 6,
+  "tool_calls": 5,
+  "status": "completed",
+  "reason": null,
+  "selected_plan": {
+    "topic": "秋季新品推广",
+    "material_ids": [
+      "m1",
+      "m2"
+    ],
+    "script": "[full] 开场：提出场景问题。\n合成素材：秋季新品面向通勤人群，强调轻便体验。\n合成素材：用场景故事介绍产品，再邀请用户参与互动。\n行动：邀请参与活动。",
+    "variants": {
+      "search_materials": "full",
+      "generate_script": "full",
+      "save_plan": "full"
+    }
+  },
+  "total_cost": 12,
+  "total_minutes": 55,
+  "saved": {
+    "path": "runs\\real-failure-final\\fa7541dec2a339bbd5889a3e5dc388dc8478b3504cafc8e677e0b38abae8e934.json",
+    "already_exists": false,
+    "committed_by": "9f215f21d7be45f39ed3fe6db19fa274",
+    "charged_cost": 12,
+    "recovered_commit": false
+  },
+  "gap": {},
+  "missing_fields": [],
+  "failures_remaining": {
+    "generate_script": 0
+  },
+  "backend": "real",
+  "backend_config": {
+    "model": "deepseek-v4-pro",
+    "base_url": "https://api.deepseek.com"
+  },
+  "injection_config": {
+    "generate_script": 1
+  },
+  "max_steps": 12,
+  "max_tool_calls": 12,
+  "charged_cost": 12
+}

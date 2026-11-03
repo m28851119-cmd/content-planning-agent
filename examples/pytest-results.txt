@@ -1,0 +1,51 @@
+============================= test session starts =============================
+platform win32 -- Python 3.12.15, pytest-8.3.5, pluggy-1.7.0 -- D:\developer\xiaoying\.venv\Scripts\python.exe
+cachedir: .pytest_cache
+rootdir: D:\developer\xiaoying
+configfile: pytest.ini
+testpaths: tests
+collecting ... collected 41 items
+
+tests/test_acceptance.py::test_missing_no_tool_no_model[budget] PASSED   [  2%]
+tests/test_acceptance.py::test_missing_no_tool_no_model[deadline] PASSED [  4%]
+tests/test_acceptance.py::test_missing_no_tool_no_model[topic] PASSED    [  7%]
+tests/test_acceptance.py::test_no_feasible_gap PASSED                    [  9%]
+tests/test_acceptance.py::test_idempotency_across_runs PASSED            [ 12%]
+tests/test_acceptance.py::test_resume_only_remaining PASSED              [ 14%]
+tests/test_acceptance.py::test_limits[limits0] PASSED                    [ 17%]
+tests/test_acceptance.py::test_limits[limits1] PASSED                    [ 19%]
+tests/test_acceptance.py::test_save_guardrail_cannot_be_prompted_away PASSED [ 21%]
+tests/test_acceptance.py::test_invalid_actions_return_observation_and_recover[bad0] PASSED [ 24%]
+tests/test_acceptance.py::test_invalid_actions_return_observation_and_recover[{broken] PASSED [ 26%]
+tests/test_acceptance.py::test_invalid_actions_return_observation_and_recover[bad2] PASSED [ 29%]
+tests/test_acceptance.py::test_invalid_actions_return_observation_and_recover[bad3] PASSED [ 31%]
+tests/test_acceptance.py::test_dependency_refusal PASSED                 [ 34%]
+tests/test_acceptance.py::test_no_false_finish PASSED                    [ 36%]
+tests/test_acceptance.py::test_deadline_replan_and_guardrail PASSED      [ 39%]
+tests/test_acceptance.py::test_model_network_error_no_retry PASSED       [ 41%]
+tests/test_acceptance.py::test_real_adapter_sends_observations_without_reasoning PASSED [ 43%]
+tests/test_acceptance.py::test_cli_resume PASSED                         [ 46%]
+tests/test_acceptance.py::test_interrupted_running_recovery PASSED       [ 48%]
+tests/test_acceptance.py::test_ledger_minutes_derived_from_tool PASSED   [ 51%]
+tests/test_acceptance.py::test_cached_success_is_skipped_not_reexecuted PASSED [ 53%]
+tests/test_agent.py::test_normal PASSED                                  [ 56%]
+tests/test_agent.py::test_replan PASSED                                  [ 58%]
+tests/test_agent.py::test_failure PASSED                                 [ 60%]
+tests/test_cli.py::test_cli_and_trace PASSED                             [ 63%]
+tests/test_cli.py::test_cli_missing_without_api_key PASSED               [ 65%]
+tests/test_commit.py::test_cannot_commit_two_plans_in_one_run PASSED     [ 68%]
+tests/test_commit.py::test_save_completed_before_state_persist_is_reconciled PASSED [ 70%]
+tests/test_commit.py::test_duplicate_does_not_rewrite_saved_file PASSED  [ 73%]
+tests/test_commit.py::test_internal_accounting_is_not_hidden_tool_call PASSED [ 75%]
+tests/test_extra.py::test_changed_price_requires_reestimate PASSED       [ 78%]
+tests/test_extra.py::test_semantic_numeric_idempotency PASSED            [ 80%]
+tests/test_extra.py::test_other_tool_failure_recoverable[search_materials] PASSED [ 82%]
+tests/test_extra.py::test_other_tool_failure_recoverable[estimate_cost] PASSED [ 85%]
+tests/test_extra.py::test_other_tool_failure_recoverable[save_plan] PASSED [ 87%]
+tests/test_extra.py::test_trace_actual_tool_arguments PASSED             [ 90%]
+tests/test_state.py::test_state_roundtrip PASSED                         [ 92%]
+tests/test_state.py::test_hard_guardrail PASSED                          [ 95%]
+tests/test_state.py::test_missing_and_invalid PASSED                     [ 97%]
+tests/test_tools.py::test_quotes_and_idempotency PASSED                  [100%]
+
+============================= 41 passed in 8.49s ==============================
